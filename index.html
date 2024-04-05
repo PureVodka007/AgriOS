@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agri</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Agri</h1>
+            <h4>Iot based smart agriculture solution</h4>
+        </div>
+        <div class="dashboard">
+            <div class="widget" id="widget1">
+                <h2>Moisture</h2>
+                <canvas id="chart1" width="400" height="200"></canvas>
+            </div>
+            <div class="widget" id="widget2">
+                <h2>Temperature</h2>
+                <canvas id="chart2" width="400" height="200"></canvas>
+            </div>
+            <div class="widget" id="widget3">
+                <h2>Humidity</h2>
+                <canvas id="chart3" width="400" height="200"></canvas>
+            </div>
+            <div class="widget">
+                <h2>Motor Control</h2>
+                <label class="switch">
+                    <input type="checkbox" id="toggleButton">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            
+            <!-- Add more widgets as needed -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

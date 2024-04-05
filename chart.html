@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Dynamic Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard with Dynamic Graph</h1>
+        </div>
+        <div class="dashboard">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Chart.js instance
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Temperature',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Function to update chart data
+        function updateChartData() {
+            // Simulated data generation (replace with actual data retrieval)
+            const newDataPoint = Math.floor(Math.random() * 100); // Random data point between 0 and 100
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+
+            // Update chart data
+            chart.data.labels.push(time);
+            chart.data.datasets[0].data.push(newDataPoint);
+
+            // Limit the number of data points to 10 for better visualization
+            const maxDataPoints = 100;
+            if (chart.data.labels.length > maxDataPoints) {
+                chart.data.labels.shift();
+                chart.data.datasets[0].data.shift();
+            }
+
+            // Update the chart
+            chart.update();
+        }
+
+        // Update chart data every 1 second
+        setInterval(updateChartData, 5000);
+    </script>
+</body>
+</html>
